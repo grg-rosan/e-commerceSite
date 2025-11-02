@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/product-details.css">
+    <title>Document</title>
+    
+</head>
+<body>
+    <header>
+        <div class="logo">Ghumti</div>
+        <nav>
+            <div class="serach-input">
+                <input type="text" placeholder="search products">
+                <img src="" alt="">
+            </div>
+            <div class="nav-links"><a href="#">Categories</a></div>
+            <div class="nav-links"><a href="#">Orders</a></div>
+            <div class="nav-links"><a href="#">Login</a></div>
+        </nav>
+    </header>
+
+    <main>
+            <div class="product-detail__card">
+                <div class="product-image">
+                    <img src="https://images.pexels.com/photos/2584269/pexels-photo-2584269.jpeg" alt="Long sleeve Jacket">
+                </div>
+                <div class="product-info">
+                    <h1 class="product-title">Long sleeve Jacket</h1>
+                        <span class="price">Price:$150</span>
+                   
+                    
+                    <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla non magni facilis blanditiis molestias soluta eveniet illum accusantium eius mollitia eligendi, ex iste doloribus magnam.</p>
+
+                    <ul class="product-meta">
+                        <li><strong>Category:</strong> women</li>
+                        <li><strong>Type:</strong> jacket</li>
+                        <li><strong>Stock:</strong> 50</li>
+                        <li><strong>Brand:</strong> FashionTrend</li>
+                    </ul>
+
+                    <div class="product-sizes">
+                        <strong>Sizes:</strong>
+                        <div class="sizes-list">
+                            <label class="size" for="size-s">
+                                <input type="radio" id="size-s" name="size" value="S">
+                                S
+                            </label>
+                            <label class="size" for="size-m">
+                                <input type="radio" id="size-m" name="size" value="M" checked>
+                                M
+                            </label>
+                            <label class="size" for="size-l">
+                                <input type="radio" id="size-l" name="size" value="L">
+                                L
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="product-rating">
+                         <i class="fa-solid fa-star"></i>4.5
+                    </div>
+
+                    <div class="product-actions">
+                        <label for="qty"><strong>Qty</strong></label>
+                        <input id="qty" type="number" min="1" max="50" value="1">
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+    </main>
+
+      <!-- <footer class="main-footer">
+      <div class="container">
+        <div class="logo"><span>FLIXX</span></div>
+        <div class="social-links">
+          <a href="https://www.facebook.com" target="_blank"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a href="https://www.twitter.com" target="_blank"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a href="https://www.instagram.com" target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </div>
+      </div>
+    </footer> -->
+
+        <script>
+        // keep visual state (selected class) in sync with checked radios
+        document.addEventListener('DOMContentLoaded', function () {
+            const labels = document.querySelectorAll('.product-sizes .size');
+            function sync() {
+                labels.forEach(l => {
+                    const input = l.querySelector('input[type="radio"]');
+                    if (!input) return;
+                    if (input.checked) l.classList.add('selected'); else l.classList.remove('selected');
+                });
+            }
+            labels.forEach(l => {
+                const input = l.querySelector('input[type="radio"]');
+                if (!input) return;
+                input.addEventListener('change', sync);
+            });
+            // initial sync on load
+            sync();
+        });
+        </script>
+</body>
+</html>

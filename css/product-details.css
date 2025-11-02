@@ -1,0 +1,108 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3rem;
+    outline: 1px solid red;
+}
+.product-detail__card{
+    display: flex;
+      border: 1px solid black;
+    padding: 1rem 1.5rem;
+    border-radius:1rem ;
+}
+.product-image img {
+    aspect-ratio: 3/2;
+object-fit: cover;
+border-radius: 1rem;
+}
+.product-info{
+    padding: 1.4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.3rem;
+}
+.product-title{
+    font-size: 2.4rem;
+    font-weight: 700;
+    color:rgba(45, 45, 45, 0.895);
+}
+.price{
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+p{
+    font-size: 1.4rem;
+    letter-spacing: .5px;
+}
+.product-meta{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    gap: .8rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+.product-meta li{
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: .4rem .6rem;
+    border: 1px solid black;
+    border-radius: .3rem;
+}
+.product-sizes {
+    font-size: 1.6rem;
+    font-weight: 400;
+    align-self:flex-start ;
+    margin: 10px 0;
+}
+.product-sizes strong{
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.product-sizes .size input[type="radio"] {
+    display: none;
+}
+
+.product-sizes .size {
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    margin-right: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    font-weight: 500;
+}
+
+.product-sizes .size.selected {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+}
+.product-rating{
+    align-self: flex-start;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+.product-actions{
+    align-self: flex-start;
+    font-size: 1.6rem;
+    font-weight: 500;
+    display: flex;
+    gap: 2rem;
+}
+.add-to-cart{
+    padding: .3rem .4rem;
+    border-radius:.6rem;
+    border: 1px solid black;
+    transition: transform 0.3s ease-in;
+    background-color: var(--color-buttons);
+}
+.add-to-cart:hover{
+    transform: scale(1.02);
+    background: var(--clr--secondary__hover);
+}

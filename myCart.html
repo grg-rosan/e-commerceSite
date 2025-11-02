@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+           <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/myCart.css">
+    <link rel="stylesheet" href="css/product-details.css">
+    <title>Document</title>
+
+</head>
+<body>
+    <header>
+        <div class="logo">Ghumti</div>
+        <nav>
+            <div class="serach-input">
+                <input type="text" placeholder="search products">
+                <img src="" alt="">
+            </div>
+            <div class="nav-links"><a href="#">Categories</a></div>
+            <div class="nav-links"><a href="#">Orders</a></div>
+            <div class="nav-links"><a href="#">Login</a></div>
+        </nav>
+    </header>
+
+        <section class="order-card" id="order-tracking">
+            <div class="order-header">
+                <h2>Order <span id="order-id">#1</span></h2>
+                <span id="order-status" class="status">Delivered</span>
+            </div>
+            <div class="order-meta" id="order-meta">User: 1 • <span id="order-date">2025-06-01</span></div>
+
+            <table class="order-items" aria-describedby="order-meta">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="order-items-body">
+                    <!-- populated by script -->
+                </tbody>
+            </table>
+
+            <div class="order-total">Total: $<span id="order-total">0.00</span></div>
+        </section>
+
+        <script>
+        // Sample order data (from user)
+        const order = {
+            _id: 1,
+            userId: 1,
+            orderDate: '2025-06-01T10:00:00Z',
+            status: 'Delivered',
+            totalAmount: 559.99,
+            items: [
+                {
+                    productId: 101,
+                    name: 'Canon EOS Rebel T100',
+                    quantity: 1,
+                    price: 559.99,
+                    image: 'https://images.pexels.com/photos/132423/pexels-photo-132423.jpeg'
+                }
+            ]
+        };
+
+        function formatDate(iso) {
+            try {
+                const d = new Date(iso);
+                return d.toLocaleString();
+            } catch (e) { return iso }
+        }
+
+        function renderOrder(o) {
+            document.getElementById('order-id').textContent = `#${o._id}`;
+            const statusEl = document.getElementById('order-status');
+            statusEl.textContent = o.status;
+            statusEl.className = 'status ' + o.status;
+            document.getElementById('order-date').textContent = formatDate(o.orderDate);
+            document.getElementById('order-total').textContent = o.totalAmount.toFixed(2);
+
+            const tbody = document.getElementById('order-items-body');
+            tbody.innerHTML = '';
+            o.items.forEach(item => {
+                const tr = document.createElement('tr');
+                const tdItem = document.createElement('td');
+                tdItem.innerHTML = `
+                    <div class="item-name">
+                        <img class="item-thumb" src="${item.image || ''}" alt="${item.name}">
+                        <div>
+                            <div class="name">${item.name}</div>
+                            <div class="meta">Product ID: ${item.productId}</div>
+                        </div>
+                    </div>`;
+
+                const tdQty = document.createElement('td'); tdQty.textContent = item.quantity;
+                const tdPrice = document.createElement('td'); tdPrice.textContent = `$${item.price.toFixed(2)}`;
+                const tdTotal = document.createElement('td'); tdTotal.textContent = `$${(item.price * item.quantity).toFixed(2)}`;
+
+                tr.appendChild(tdItem);
+                tr.appendChild(tdQty);
+                tr.appendChild(tdPrice);
+                tr.appendChild(tdTotal);
+                tbody.appendChild(tr);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function(){ renderOrder(order); });
+        </script>
+
+</body>
+</html>
